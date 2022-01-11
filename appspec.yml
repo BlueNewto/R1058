@@ -1,18 +1,22 @@
 version: 0.0
 os: linux
 files:
- - source: /index.html
-   destination: /var/www/html/
+  - source: .
+    destination: /var/www/html/
 hooks:
- BeforeInstall:
-         - location: httpd_install.sh
-    timeout: 300
-    runas: root
-  - location: httpd_start.sh
-    timeout: 300
-    runas: root
- ApplicationStop:
-  - location: httpd_stop.sh
-    timeout: 300
-    runas: root
-
+  AfterInstall:
+   - location: httpd_install.sh
+     timeout: 300
+     runas: root
+  ApplicationStart:
+   - location: httpd_start.sh
+     timeout: 300
+     runas: root
+  ApplicationStop:
+   - location: httpd_stop.sh
+     timeout: 300
+     runas: root
+  BeforeInstall:
+   - location: httpd_install.sh
+     timeout: 300
+     runas: root    
