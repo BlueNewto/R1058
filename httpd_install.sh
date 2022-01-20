@@ -1,4 +1,6 @@
 #!/bin/bash
 sudo apt update -y
-#sudo apt install nginx -y
+set -e
+yum update -y
+pm2 update
 
